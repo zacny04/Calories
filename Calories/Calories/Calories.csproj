@@ -110,10 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Calories.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Calories_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Calories.mdf</DependentUpon>
     </Content>
   </ItemGroup>
