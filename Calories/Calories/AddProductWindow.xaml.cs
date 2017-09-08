@@ -23,9 +23,17 @@ namespace Calories
     {
         private string namePattern = @"(^[\w\s]+$)";
         private string numberPattern = @"(^[\d]+$)";
-        public AddProductWindow()
+        private Products _product;
+        public AddProductWindow(Products product)
         {
             InitializeComponent();
+            _product = product;
+            if (_product.Id != 0)
+            {
+                this.Title = "Modify Product";
+                pAddButton.Content = "Modify";
+                this.DataContext = _product;
+            }
         }
 
         private void pAddButton_Click(object sender, RoutedEventArgs e)
@@ -35,29 +43,55 @@ namespace Calories
             {
                 using (CaloriesEntities db = new CaloriesEntities())
                 {
-                    Products product = new Products
+                    if (_product.Id != 0)
                     {
-                        Name = pNameTextBox.Text
-                    };
-                    try
-                    {
-                        product.weight = Int32.Parse(pWeightTextBox.Text);
-                        product.calories = Int32.Parse(pCaloriesTextBox.Text);
+                        var result = db.Products.SingleOrDefault(b => b.Id == _product.Id);
+                        if (result != null)
+                        {
+                            result.Name = pNameTextBox.Text;
+                            try
+                            {
+                                result.weight = Int32.Parse(pWeightTextBox.Text);
+                                result.calories = Int32.Parse(pCaloriesTextBox.Text);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
-                    }                    
-                    db.Products.Add(product);
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        _product.Name = pNameTextBox.Text;
+                        try
+                        {
+                            _product.weight = Int32.Parse(pWeightTextBox.Text);
+                            _product.calories = Int32.Parse(pCaloriesTextBox.Text);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        db.Products.Add(_product);
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
+                this.DialogResult = true;
             }
             else
             {
@@ -67,6 +101,7 @@ namespace Calories
 
         private void pCancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
             this.Close();
         }
     }
