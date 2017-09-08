@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CaloriesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Lists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Creation_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="calories" Type="int" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductsLists">
+          <Key>
+            <PropertyRef Name="Product_id" />
+            <PropertyRef Name="List_id" />
+          </Key>
+          <Property Name="Product_id" Type="int" Nullable="false" />
+          <Property Name="List_id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_List_id">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1" />
+          <End Role="ProductsLists" Type="Self.ProductsLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsLists">
+              <PropertyRef Name="List_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_id">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductsLists" Type="Self.ProductsLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsLists">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CaloriesModelStoreContainer">
+          <EntitySet Name="Lists" EntityType="Self.Lists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsLists" EntityType="Self.ProductsLists" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_List_id" Association="Self.FK_List_id">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ProductsLists" EntitySet="ProductsLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_id" Association="Self.FK_Product_id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsLists" EntitySet="ProductsLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CaloriesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Creation_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ProductsLists" Relationship="Self.FK_List_id" FromRole="Lists" ToRole="ProductsLists" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="calories" Type="Int32" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="ProductsLists" Relationship="Self.FK_Product_id" FromRole="Products" ToRole="ProductsLists" />
+        </EntityType>
+        <EntityType Name="ProductsLists">
+          <Key>
+            <PropertyRef Name="Product_id" />
+            <PropertyRef Name="List_id" />
+          </Key>
+          <Property Name="Product_id" Type="Int32" Nullable="false" />
+          <Property Name="List_id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lists" Relationship="Self.FK_List_id" FromRole="ProductsLists" ToRole="Lists" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_id" FromRole="ProductsLists" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_List_id">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1" />
+          <End Role="ProductsLists" Type="Self.ProductsLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsLists">
+              <PropertyRef Name="List_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_id">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductsLists" Type="Self.ProductsLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsLists">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CaloriesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lists" EntityType="Self.Lists" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="ProductsLists" EntityType="Self.ProductsLists" />
+          <AssociationSet Name="FK_List_id" Association="Self.FK_List_id">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ProductsLists" EntitySet="ProductsLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_id" Association="Self.FK_Product_id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsLists" EntitySet="ProductsLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CaloriesModelStoreContainer" CdmEntityContainer="CaloriesEntities">
+          <EntitySetMapping Name="Lists">
+            <EntityTypeMapping TypeName="CaloriesModel.Lists">
+              <MappingFragment StoreEntitySet="Lists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Creation_date" ColumnName="Creation_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CaloriesModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="calories" ColumnName="calories" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsLists">
+            <EntityTypeMapping TypeName="CaloriesModel.ProductsLists">
+              <MappingFragment StoreEntitySet="ProductsLists">
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="List_id" ColumnName="List_id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
