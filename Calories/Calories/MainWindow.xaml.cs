@@ -22,6 +22,8 @@ namespace Calories
     {
         public MainWindow()
         {
+            AddProductWindow window = new AddProductWindow();
+            window.Show();//for testing purposes
             InitializeComponent();
         }
     }
