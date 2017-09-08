@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calories"
         mc:Ignorable="d"
-        Title="Kalorie" Height="350" Width="525">
+        Title="Kalorie" Height="400" Width="320">
+  
     <Grid>
-        
+        <ListView Name="ProductsListView" Margin="0,0,0,50"
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+           <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nazwa" Width="110" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Data utworzenia" Width="100" DisplayMemberBinding="{Binding Creation_date}" />
+                    <GridViewColumn Header="Ilość kalorii" Width="90" DisplayMemberBinding="{Binding }"/>
+                </GridView>
+           </ListView.View>
+        </ListView>
+    
+        <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">Produkty</Button>
+        <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">Usuń listę</Button>
+        <Button Width="80" Height="30" VerticalAlignment="Bottom" Margin="10">Nowa lista</Button>
     </Grid>
 </Window>
