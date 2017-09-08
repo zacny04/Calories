@@ -9,7 +9,8 @@
   
     <Grid>
         <ListView Name="ProductsListView" Margin="0,0,0,50"
-                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                   ItemsSource="{Binding}">
            <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="110" DisplayMemberBinding="{Binding Name}"/>
