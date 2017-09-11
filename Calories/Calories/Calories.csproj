@@ -166,7 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Calories.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CaloriesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -179,7 +179,7 @@
       <LastGenOutput>CaloriesModel.cs</LastGenOutput>
     </Content>
     <Content Include="Calories_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Calories.mdf</DependentUpon>
     </Content>
   </ItemGroup>

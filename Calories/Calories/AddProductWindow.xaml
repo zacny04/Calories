@@ -33,8 +33,8 @@
         <Label Content="Product name:" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
         <Label Content="Weight(g):" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
         <Label Content="Calories:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="pAddButton" Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="40,0,0,15" Width="76" Height="20" VerticalAlignment="Bottom" Click="pAddButton_Click"/>
-        <Button x:Name="pCancelButton" Content="Cancel" IsCancel="True" HorizontalAlignment="Left" Margin="155,0,0,15" VerticalAlignment="Bottom" Width="76" Click="pCancelButton_Click"/>
+        <Button x:Name="pAddButton" Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="40,0,0,15" Width="76" Height="20" VerticalAlignment="Bottom" Click="AddButton_Click"/>
+        <Button x:Name="pCancelButton" Content="Cancel" IsCancel="True" HorizontalAlignment="Left" Margin="155,0,0,15" VerticalAlignment="Bottom" Width="76" Click="CancelButton_Click"/>
 
     </Grid>
 </Window>

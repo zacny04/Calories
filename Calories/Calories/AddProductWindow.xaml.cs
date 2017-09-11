@@ -24,6 +24,10 @@ namespace Calories
         private string namePattern = @"(^[\w\s]+$)";
         private string numberPattern = @"(^[\d]+$)";
         private Products _product;
+        /// <summary>
+        /// Window to add or modify Product
+        /// </summary>
+        /// <param name="product">Product should be a new object if we call add Product or exact object if we're modyfing it</param>
         public AddProductWindow(Products product)
         {
             InitializeComponent();
@@ -36,7 +40,7 @@ namespace Calories
             }
         }
 
-        private void pAddButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Regex nameRegex = new Regex(namePattern), numberRegex = new Regex(numberPattern);
             if (nameRegex.IsMatch(pNameTextBox.Text) && numberRegex.IsMatch(pWeightTextBox.Text) && numberRegex.IsMatch(pCaloriesTextBox.Text))
@@ -99,16 +103,27 @@ namespace Calories
             }
         }
 
-        private void pCancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();
         }
     }
+    /// <summary>
+    /// Helper class to determine if user entered valid text 
+    /// </summary>
     public class IsValidString : IValueConverter
     {
         private string namePattern = @"(^$)|(^[\w\s]+$)";
         private string numberPattern = @"(^$)|(^[\d]+$)";
+        /// <summary>
+        /// Basic Convert metohd of Helper class
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns>true if value is correct, false if not</returns>
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             Regex rgx;

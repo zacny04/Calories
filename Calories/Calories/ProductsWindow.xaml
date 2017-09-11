@@ -16,7 +16,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="30" Margin="25,10">Dodaj produkt</Button>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="30" Margin="25,10" Click="Add_Button">Dodaj produkt</Button>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10">Usuń zaznaczone</Button>
     </Grid>
 </Window>

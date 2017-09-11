@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace Calories
 {
@@ -21,23 +22,17 @@ namespace Calories
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Lists> productsLists;
+        private CaloriesEntities db;
          /// <summary>
          /// Start window with listview showing products lists
          /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-            productsLists = new ObservableCollection<Lists>();
-            ProductsListView.DataContext = productsLists;
-            using (var db = new CaloriesEntities())
-            {
-                var list = from l in db.Lists select l;
-                foreach(var l in list)
-                {
-                    productsLists.Add(l);
-                }
-             }
+            
+            db = new CaloriesEntities();
+            db.Lists.Load();
+            ProductsListView.DataContext = db.Lists.Local;
         }
 
         private void ShowProducts_Button(object sender, RoutedEventArgs e)

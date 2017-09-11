@@ -19,9 +19,19 @@ namespace Calories
     /// </summary>
     public partial class ProductsWindow : Window
     {
+        /// <summary>
+        /// Window containing all products in Products table
+        /// </summary>
         public ProductsWindow()
         {
             InitializeComponent();
+        }
+
+        private void Add_Button(object sender, RoutedEventArgs e)
+        {
+            Products product = new Products();
+            AddProductWindow addPWindow = new AddProductWindow(product);
+            addPWindow.ShowDialog();
         }
     }
 }

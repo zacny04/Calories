@@ -12,7 +12,9 @@ namespace Calories
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    /// <summary>
+    /// Basic dbContext to calories.mdf
+    /// </summary>
     public partial class CaloriesEntities : DbContext
     {
         public CaloriesEntities()

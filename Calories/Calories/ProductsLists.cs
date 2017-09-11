@@ -11,7 +11,9 @@ namespace Calories
 {
     using System;
     using System.Collections.Generic;
-    
+    /// <summary>
+    /// List of products lists
+    /// </summary>
     public partial class ProductsLists
     {
         public int Product_id { get; set; }
