@@ -1,0 +1,47 @@
+﻿<Window x:Class="Calories.AddListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calories"
+        mc:Ignorable="d"
+        Title="Dodaj listę produktów" MinHeight="305" MinWidth="500" Height="305" Width="500">
+    <Grid>
+        <Label Content="Nazwa listy:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="lNameTextBox" Height="23" Margin="82,14,20,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Grid Margin="20,45,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="36" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListView Margin="0,30,0,40" Grid.Column="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nazwa" Width="150"/>
+                        <GridViewColumn Header="Kalorie" Width="50"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label Content="Dostępne produkty:" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" Grid.Column="0" Height="26"/>
+            <Label Content="Produkty na liście:" VerticalAlignment="Top" Grid.Column="2" HorizontalContentAlignment="Center" Height="26"/>
+            <ListView Grid.Column="2" Margin="0,30,0,40">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nazwa" Width="100"/>
+                        <GridViewColumn Header="Kalorie" Width="50"/>
+                        <GridViewColumn Header="Ilość" Width="50"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.Column="1" Height="219" VerticalAlignment="Center">
+                <Button Content="&gt;" Margin="5,34,5,0" Height="26" VerticalAlignment="Top"/>
+                <Button Content="&gt;&gt;" Margin="5,65,5,0" Height="26" VerticalAlignment="Top"/>
+                <Button Content="&lt;" Margin="5,127,5,0" Height="26" VerticalAlignment="Top"/>
+                <Button Content="&lt;&lt;" Margin="5,96,5,0" Height="26" VerticalAlignment="Top"/>
+            </Grid>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center">Dodaj listę</Button>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100">Anuluj</Button>
+        </Grid>
+    </Grid>
+</Window>
