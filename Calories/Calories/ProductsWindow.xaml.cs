@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace Calories
 {
@@ -19,19 +20,30 @@ namespace Calories
     /// </summary>
     public partial class ProductsWindow : Window
     {
+        private CaloriesEntities db;
         /// <summary>
         /// Window containing all products in Products table
         /// </summary>
         public ProductsWindow()
         {
             InitializeComponent();
+            db = new CaloriesEntities();
+            db.Products.Load();
+            ProductsLV.DataContext = db.Products.Local;
         }
 
         private void Add_Button(object sender, RoutedEventArgs e)
         {
             Products product = new Products();
             AddProductWindow addPWindow = new AddProductWindow(product);
+            addPWindow.Closing += AddPWindow_Closing;
             addPWindow.ShowDialog();
+
+        }
+
+        private void AddPWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            db.Products.Load();
         }
     }
 }

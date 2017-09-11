@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="Products" Height="360" Width="290">
     <Grid>
-        <ListView Margin="0,0,0,50" ItemsSource="{Binding}">
+        <ListView Name="ProductsLV" Margin="0,0,0,50" ItemsSource="{Binding}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Kalorie" Width="80" DisplayMemberBinding="{Binding calories}"/>
-                    <GridViewColumn Header="Ilość" Width="80" DisplayMemberBinding="{Binding weight}"/>
+                    <GridViewColumn Header="Kalorie" Width="75" DisplayMemberBinding="{Binding calories}"/>
+                    <GridViewColumn Header="Ilość" Width="75" DisplayMemberBinding="{Binding weight}"/>
                 </GridView>
             </ListView.View>
         </ListView>
