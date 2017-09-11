@@ -45,5 +45,13 @@ namespace Calories
         {
             db.Products.Load();
         }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Products p = ((ListViewItem)sender).Content as Products;
+            AddProductWindow addPWindow = new AddProductWindow(p);
+            addPWindow.Closing += AddPWindow_Closing;
+            addPWindow.ShowDialog();
+        }
     }
 }

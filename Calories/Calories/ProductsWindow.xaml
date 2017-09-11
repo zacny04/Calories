@@ -9,6 +9,11 @@
     <Grid>
         <ListView Name="ProductsLV" Margin="0,0,0,50" ItemsSource="{Binding}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
