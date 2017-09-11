@@ -39,5 +39,11 @@ namespace Calories
                 }
              }
         }
+
+        private void ShowProducts_Button(object sender, RoutedEventArgs e)
+        {
+            ProductsWindow pw = new ProductsWindow();
+            pw.ShowDialog();
+        }
     }
 }

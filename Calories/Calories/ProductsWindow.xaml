@@ -1,0 +1,22 @@
+﻿<Window x:Class="Calories.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calories"
+        mc:Ignorable="d"
+        Title="Products" Height="360" Width="290">
+    <Grid>
+        <ListView Margin="0,0,0,50" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Kalorie" Width="80" DisplayMemberBinding="{Binding calories}"/>
+                    <GridViewColumn Header="Ilość" Width="80" DisplayMemberBinding="{Binding weight}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="30" Margin="25,10">Dodaj produkt</Button>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10">Usuń zaznaczone</Button>
+    </Grid>
+</Window>
