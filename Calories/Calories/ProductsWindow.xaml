@@ -23,6 +23,6 @@
             </ListView.View>
         </ListView>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="30" Margin="25,10" Click="Add_Button">Dodaj produkt</Button>
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10">Usuń zaznaczone</Button>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10" Click="Delete_Button">Usuń zaznaczone</Button>
     </Grid>
 </Window>
