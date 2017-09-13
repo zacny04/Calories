@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using System.Threading;
 
 namespace Calories
 {
@@ -30,9 +31,24 @@ namespace Calories
         public MainWindow()
         {
             InitializeComponent();
-            db = new CaloriesEntities();
-            db.Lists.Load();
-            ProductsListView.DataContext = db.Lists.Local;
+
+
+            Thread oTh = new Thread(new ThreadStart(() =>
+            {
+                db = new CaloriesEntities();
+                db.Lists.Load();
+                Dispatcher.Invoke(() =>
+                {
+                    ProductsListView.DataContext = db.Lists.Local;
+                });
+            }));
+            oTh.IsBackground = true;
+            if(!oTh.IsAlive)
+            {
+                oTh.Start();
+            }
+            
+            
         }
 
         private void ShowProducts_Button(object sender, RoutedEventArgs e)
