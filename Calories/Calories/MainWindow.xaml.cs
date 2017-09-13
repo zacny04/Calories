@@ -22,6 +22,7 @@ namespace Calories
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private CaloriesEntities db;
          /// <summary>
          /// Start window with listview showing products lists
@@ -29,7 +30,6 @@ namespace Calories
         public MainWindow()
         {
             InitializeComponent();
-            
             db = new CaloriesEntities();
             db.Lists.Load();
             ProductsListView.DataContext = db.Lists.Local;
@@ -39,6 +39,12 @@ namespace Calories
         {
             ProductsWindow pw = new ProductsWindow();
             pw.ShowDialog();
+        }
+
+        private void AddList_Button(object sender, RoutedEventArgs e)
+        {
+            AddListWindow alW = new AddListWindow();
+            alW.ShowDialog();
         }
     }
 }

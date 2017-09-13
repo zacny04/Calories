@@ -15,32 +15,32 @@
                 <ColumnDefinition Width="36" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ListView Margin="0,30,0,40" Grid.Column="0">
+            <ListView Name="ProductsLVS" ItemsSource="{Binding}" Margin="0,30,0,40" Grid.Column="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nazwa" Width="150"/>
-                        <GridViewColumn Header="Kalorie" Width="50"/>
+                        <GridViewColumn Header="Nazwa" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Kalorie" Width="50" DisplayMemberBinding="{Binding calories}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
             <Label Content="Dostępne produkty:" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" Grid.Column="0" Height="26"/>
             <Label Content="Produkty na liście:" VerticalAlignment="Top" Grid.Column="2" HorizontalContentAlignment="Center" Height="26"/>
-            <ListView Grid.Column="2" Margin="0,30,0,40">
+            <ListView Name="ProductsListsLV" ItemsSource="{Binding}" Grid.Column="2" Margin="0,30,0,40">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nazwa" Width="100"/>
-                        <GridViewColumn Header="Kalorie" Width="50"/>
-                        <GridViewColumn Header="Ilość" Width="50"/>
+                        <!--<GridViewColumn Header="Nazwa" Width="100" DisplayMemberBinding="{Binding Products.Name}"/>
+                        <GridViewColumn Header="Kalorie" Width="50" DisplayMemberBinding="{Binding Products.calories}"/>-->
+                        <GridViewColumn Header="Ilość" Width="50" DisplayMemberBinding="{Binding Amount}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
             <Grid Grid.Column="1" Height="219" VerticalAlignment="Center">
-                <Button Content="&gt;" Margin="5,34,5,0" Height="26" VerticalAlignment="Top"/>
-                <Button Content="&gt;&gt;" Margin="5,65,5,0" Height="26" VerticalAlignment="Top"/>
-                <Button Content="&lt;" Margin="5,127,5,0" Height="26" VerticalAlignment="Top"/>
-                <Button Content="&lt;&lt;" Margin="5,96,5,0" Height="26" VerticalAlignment="Top"/>
+                <Button Content="&gt;" Margin="5,34,5,0" Height="26" VerticalAlignment="Top" Click="AddSelected_Button"/>
+                <Button Content="&gt;&gt;" Margin="5,65,5,0" Height="26" VerticalAlignment="Top" Click="AddAll_Button"/>
+                <Button Content="&lt;" Margin="5,127,5,0" Height="26" VerticalAlignment="Top" Click="RemoveSelected_Button"/>
+                <Button Content="&lt;&lt;" Margin="5,96,5,0" Height="26" VerticalAlignment="Top" Click="RemoveAll_Button"/>
             </Grid>
-            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center">Dodaj listę</Button>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center" Click="AddList_Button">Dodaj listę</Button>
             <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100">Anuluj</Button>
         </Grid>
     </Grid>

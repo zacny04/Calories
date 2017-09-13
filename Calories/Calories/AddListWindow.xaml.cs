@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace Calories
 {
@@ -19,9 +20,55 @@ namespace Calories
     /// </summary>
     public partial class AddListWindow : Window
     {
+        private CaloriesEntities db;
+        private Lists list;
         public AddListWindow()
         {
             InitializeComponent();
+
+            list = new Lists
+            {
+                Creation_date = DateTime.Now            
+            };
+            
+
+            db = new CaloriesEntities();
+            db.Products.Load();
+
+            ProductsLVS.DataContext = db.Products.Local;
+        }
+
+        private void AddSelected_Button(object sender, RoutedEventArgs e)
+        {
+            foreach(Products item in ProductsLVS.SelectedItems)
+            {
+                ProductsLists pl = new ProductsLists();
+                pl.Lists = list;
+                pl.Products = item;
+                list.ProductsLists.Add(pl);
+            }
+        }
+
+        private void RemoveAll_Button(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveSelected_Button(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddAll_Button(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddList_Button(object sender, RoutedEventArgs e)
+        {
+            list.Name = lNameTextBox.Text;
+            db.Lists.Add(list);
+            db.SaveChanges();
         }
     }
 }

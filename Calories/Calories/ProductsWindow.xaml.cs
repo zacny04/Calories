@@ -30,6 +30,7 @@ namespace Calories
             db = new CaloriesEntities();
             db.Products.Load();
             ProductsLV.DataContext = db.Products.Local;
+
         }
 
         private void Add_Button(object sender, RoutedEventArgs e)
