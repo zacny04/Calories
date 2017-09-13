@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace Calories
 {
@@ -22,6 +23,8 @@ namespace Calories
     {
         private CaloriesEntities db;
         private Lists list;
+        private ObservableCollection<ProductsLists> prodList;
+
         public AddListWindow()
         {
             InitializeComponent();
@@ -30,11 +33,12 @@ namespace Calories
             {
                 Creation_date = DateTime.Now            
             };
-            
+
+            prodList = new ObservableCollection<ProductsLists>();
 
             db = new CaloriesEntities();
             db.Products.Load();
-
+            ProductsListsLV.DataContext = prodList;
             ProductsLVS.DataContext = db.Products.Local;
         }
 
@@ -42,10 +46,11 @@ namespace Calories
         {
             foreach(Products item in ProductsLVS.SelectedItems)
             {
+
                 ProductsLists pl = new ProductsLists();
                 pl.Lists = list;
                 pl.Products = item;
-                list.ProductsLists.Add(pl);
+                prodList.Add(pl);
             }
         }
 
@@ -56,7 +61,7 @@ namespace Calories
 
         private void RemoveSelected_Button(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void AddAll_Button(object sender, RoutedEventArgs e)
@@ -67,6 +72,10 @@ namespace Calories
         private void AddList_Button(object sender, RoutedEventArgs e)
         {
             list.Name = lNameTextBox.Text;
+            foreach(ProductsLists pl in prodList)
+            {
+                list.ProductsLists.Add(pl);
+            }
             db.Lists.Add(list);
             db.SaveChanges();
         }

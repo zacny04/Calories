@@ -28,8 +28,8 @@
             <ListView Name="ProductsListsLV" ItemsSource="{Binding}" Grid.Column="2" Margin="0,30,0,40">
                 <ListView.View>
                     <GridView>
-                        <!--<GridViewColumn Header="Nazwa" Width="100" DisplayMemberBinding="{Binding Products.Name}"/>
-                        <GridViewColumn Header="Kalorie" Width="50" DisplayMemberBinding="{Binding Products.calories}"/>-->
+                        <GridViewColumn Header="Nazwa" Width="100" DisplayMemberBinding="{Binding Products.Name}"/>
+                        <GridViewColumn Header="Kalorie" Width="50" DisplayMemberBinding="{Binding Products.calories}"/>
                         <GridViewColumn Header="Ilość" Width="50" DisplayMemberBinding="{Binding Amount}"/>
                     </GridView>
                 </ListView.View>
