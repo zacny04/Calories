@@ -25,9 +25,9 @@ namespace Calories
     {
 
         private CaloriesEntities db;
-         /// <summary>
-         /// Start window with listview showing products lists
-         /// </summary>
+        /// <summary>
+        /// Start window with listview showing products lists
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -43,12 +43,12 @@ namespace Calories
                 });
             }));
             oTh.IsBackground = true;
-            if(!oTh.IsAlive)
+            if (!oTh.IsAlive)
             {
                 oTh.Start();
             }
-            
-            
+
+
         }
 
         private void ShowProducts_Button(object sender, RoutedEventArgs e)
@@ -60,7 +60,13 @@ namespace Calories
         private void AddList_Button(object sender, RoutedEventArgs e)
         {
             AddListWindow alW = new AddListWindow();
+            alW.Closing += AlW_Closing;
             alW.ShowDialog();
+        }
+
+        private void AlW_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            db.Lists.Load();
         }
     }
 }
