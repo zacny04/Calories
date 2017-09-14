@@ -54,8 +54,8 @@
                 <Button Content="&lt;" Margin="5,127,5,0" Height="26" VerticalAlignment="Top" Click="RemoveSelected_Button"/>
                 <Button Content="&lt;&lt;" Margin="5,96,5,0" Height="26" VerticalAlignment="Top" Click="RemoveAll_Button"/>
             </Grid>
-            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center" Click="AddList_Button">Dodaj listę</Button>
-            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100" Click="Close_Button">Anuluj</Button>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center" Click="AddList_Button" IsDefault="True">Dodaj listę</Button>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100" Click="Close_Button" IsCancel="True">Anuluj</Button>
         </Grid>
     </Grid>
 </Window>

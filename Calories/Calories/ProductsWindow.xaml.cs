@@ -30,7 +30,6 @@ namespace Calories
             db = new CaloriesEntities();
             db.Products.Load();
             ProductsLV.DataContext = db.Products.Local;
-
         }
 
         private void Add_Button(object sender, RoutedEventArgs e)
@@ -39,14 +38,23 @@ namespace Calories
             AddProductWindow addPWindow = new AddProductWindow(product);
             addPWindow.Closing += AddPWindow_Closing;
             addPWindow.ShowDialog();
-
         }
-
+        private void Delete_Button(object sender, RoutedEventArgs e)
+        {
+            if (ProductsLV.SelectedItems.Count >= 1)
+            {
+                List<Products> l = ProductsLV.SelectedItems.OfType<Products>().ToList();
+                foreach (Products product in l)
+                {
+                    db.Products.Remove(product);
+                }
+                db.SaveChanges();
+            }
+        }
         private void AddPWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             db.Products.Load();
         }
-
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Products p = ((ListViewItem)sender).Content as Products;

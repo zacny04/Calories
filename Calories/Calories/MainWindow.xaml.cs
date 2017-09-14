@@ -70,12 +70,12 @@ namespace Calories
         }
         private void DeleteList_Button(object sender, RoutedEventArgs e)
          {
-             if(ProductsListView.SelectedItems.Count == 0)
+             if(ProductsListView.SelectedItems.Count == 1)
              {
                  Lists l = ProductsListView.SelectedItem as Lists;
                  db.Lists.Remove(l);
                  db.SaveChanges();
-             }
+            }
          }
 
         

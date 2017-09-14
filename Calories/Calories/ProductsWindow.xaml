@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calories"
         mc:Ignorable="d"
-        Title="Products" Height="360" Width="290">
+        Title="Produkty" Height="360" Width="290">
     <Grid>
         <ListView Name="ProductsLV" Margin="0,0,0,50" ItemsSource="{Binding}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -18,11 +18,11 @@
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Kalorie" Width="75" DisplayMemberBinding="{Binding calories}"/>
-                    <GridViewColumn Header="Ilość" Width="75" DisplayMemberBinding="{Binding weight}"/>
+                    <GridViewColumn Header="Waga" Width="75" DisplayMemberBinding="{Binding weight}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="30" Margin="25,10" Click="Add_Button">Dodaj produkt</Button>
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10">Usuń zaznaczone</Button>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="30" Margin="25,10" Click="Delete_Button">Usuń zaznaczone</Button>
     </Grid>
 </Window>

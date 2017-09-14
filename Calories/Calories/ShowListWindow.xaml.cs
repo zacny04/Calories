@@ -43,7 +43,10 @@ using System;
              }
  
              CaloriesCount.Text = "£¹czna iloœæ kalorii: " + calories_sum.ToString();
-             
          }
-     }
+        private void Exit_Button(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
  }
