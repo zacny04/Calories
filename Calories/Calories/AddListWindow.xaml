@@ -25,7 +25,14 @@
             </ListView>
             <Label Content="Dostępne produkty:" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" Grid.Column="0" Height="26"/>
             <Label Content="Produkty na liście:" VerticalAlignment="Top" Grid.Column="2" HorizontalContentAlignment="Center" Height="26"/>
-            <ListView Name="ProductsListsLV" ItemsSource="{Binding}" Grid.Column="2" Margin="0,30,0,40">
+            <ListView Name="ProductsListsLV" ItemsSource="{Binding}" Grid.Column="2" Margin="0,30,0,40"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Nazwa" Width="100" DisplayMemberBinding="{Binding Products.Name}"/>
@@ -34,7 +41,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
 
-                                    <TextBox Width="{Binding ElementName=ProductsListsLV, Path=View.Columns[2].Width}" Text="{Binding Path=Amount ,Mode=TwoWay}" />
+                                    <TextBox  Text="{Binding Path=Amount ,Mode=TwoWay}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
