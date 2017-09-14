@@ -75,5 +75,16 @@ namespace Calories
                  db.SaveChanges();
              }
          }
+
+        
+         private void LV_DoubleClick(object sender, MouseButtonEventArgs e)
+         {
+            Lists l = (sender as ListView).SelectedItem as Lists;
+             if (l!= null)
+             {
+                 ShowListWindow slW = new ShowListWindow(l);
+                 slW.ShowDialog();
+             }
+         }
     }
 }

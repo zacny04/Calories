@@ -10,7 +10,8 @@
     <Grid>
         <ListView SelectionMode="Single" Name="ProductsListView" Margin="0,0,0,50"
                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                   ItemsSource="{Binding}">
+                   ItemsSource="{Binding}"
+                   MouseDoubleClick="LV_DoubleClick">
            <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="110" DisplayMemberBinding="{Binding Name}"/>
