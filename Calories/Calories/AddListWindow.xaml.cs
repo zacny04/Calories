@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace Calories
 {
@@ -106,5 +107,15 @@ namespace Calories
         {
             Close();
         }
+        
+         private void Amount_LostFocus(object sender, RoutedEventArgs e)
+         {
+             TextBox tb = sender as TextBox;
+             if(!Regex.IsMatch(tb.Text,"^[0-9]{1,}$"))
+             {
+                 MessageBox.Show("Wprowadzona wartość nie jest liczbą", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                 tb.Text = "0";
+             }
+         }
     }
 }
