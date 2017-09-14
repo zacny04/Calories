@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calories"
         mc:Ignorable="d"
-        Title="Kalorie" Height="400" Width="320">
+        Title="Kalorie" Height="400" Width="320" ResizeMode="CanMinimize">
 
         <Window.Resources>
             <local:ListCaloriesConverter x:Key="ListCaloriesConverter"/>

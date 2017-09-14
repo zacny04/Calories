@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calories"
         mc:Ignorable="d"
-        Title="Produkty" Height="360" Width="290">
+        Title="Produkty" Height="360" Width="290" ResizeMode="NoResize">
     <Grid>
         <ListView Name="ProductsLV" Margin="0,0,0,50" ItemsSource="{Binding}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
