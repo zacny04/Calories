@@ -25,7 +25,9 @@ namespace Calories
         private CaloriesEntities db;
         private Lists list;
         private ObservableCollection<ProductsLists> prodList;
-
+        /// <summary>
+        /// Constructor of Window for adding new List
+        /// </summary>
         public AddListWindow()
         {
             InitializeComponent();
@@ -51,9 +53,11 @@ namespace Calories
             {
                 if (!products.Contains(item))
                 {
-                    ProductsLists pl = new ProductsLists();
-                    pl.Lists = list;
-                    pl.Products = item;
+                    ProductsLists pl = new ProductsLists
+                    {
+                        Lists = list,
+                        Products = item
+                    };
                     prodList.Add(pl);
                 }
             }
@@ -68,8 +72,7 @@ namespace Calories
         {
             while (ProductsListsLV.SelectedItems.Count > 0)
             {
-                ProductsLists pl = ProductsListsLV.SelectedItems[0] as ProductsLists;
-                if (pl != null)
+                if (ProductsListsLV.SelectedItems[0] is ProductsLists pl)
                 {
                     prodList.Remove(pl);
                 }
@@ -83,9 +86,11 @@ namespace Calories
             {
                 if (!products.Contains(item))
                 {
-                    ProductsLists pl = new ProductsLists();
-                    pl.Lists = list;
-                    pl.Products = item;
+                    ProductsLists pl = new ProductsLists
+                    {
+                        Lists = list,
+                        Products = item
+                    };
                     prodList.Add(pl);
                 }
             }

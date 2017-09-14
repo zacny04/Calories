@@ -19,6 +19,10 @@ using System;
      /// </summary>
      public partial class ShowListWindow : Window
      {
+        /// <summary>
+        /// Basic window to show all list properties
+        /// </summary>
+        /// <param name="list">list object to display</param>
          public ShowListWindow(Lists list)
          {
              InitializeComponent();

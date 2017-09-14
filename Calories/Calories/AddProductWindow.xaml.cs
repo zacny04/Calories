@@ -143,6 +143,14 @@ namespace Calories
             else
                 return false;
         }
+        /// <summary>
+        /// Dummy method only for implementing interface purposes
+        /// </summary>
+        /// <param name="value">never used</param>
+        /// <param name="targetType">never use</param>
+        /// <param name="parameter">never used</param>
+        /// <param name="culture">never used</param>
+        /// <returns>empty string - just in case</returns>
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             return String.Empty;

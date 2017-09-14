@@ -17,18 +17,33 @@ namespace Calories
     /// </summary>
     public partial class CaloriesEntities : DbContext
     {
+        /// <summary>
+        /// Constructor to CaloriesEntities
+        /// </summary>
         public CaloriesEntities()
             : base("name=CaloriesEntities")
         {
         }
     
+        /// <summary>
+        /// method used for creating database from code behind, we don't use it 
+        /// </summary>
+        /// <param name="modelBuilder">Not necessary</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+        /// <summary>
+        /// DbSet containing all Lists from table
+        /// </summary>
         public virtual DbSet<Lists> Lists { get; set; }
+        /// <summary>
+        /// DbSet containing all Products from table
+        /// </summary>
         public virtual DbSet<Products> Products { get; set; }
+        /// <summary>
+        /// DbSet containing all Products and lists from many-many relationship
+        /// </summary>
         public virtual DbSet<ProductsLists> ProductsLists { get; set; }
     }
 }

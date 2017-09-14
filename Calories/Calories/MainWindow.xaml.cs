@@ -41,8 +41,10 @@ namespace Calories
                 {
                     ProductsListView.DataContext = db.Lists.Local;
                 });
-            }));
-            oTh.IsBackground = true;
+            }))
+            {
+                IsBackground = true
+            };
             if (!oTh.IsAlive)
             {
                 oTh.Start();
@@ -79,12 +81,11 @@ namespace Calories
         
          private void LV_DoubleClick(object sender, MouseButtonEventArgs e)
          {
-            Lists l = (sender as ListView).SelectedItem as Lists;
-             if (l!= null)
-             {
-                 ShowListWindow slW = new ShowListWindow(l);
-                 slW.ShowDialog();
-             }
-         }
+            if ((sender as ListView).SelectedItem is Lists l)
+            {
+                ShowListWindow slW = new ShowListWindow(l);
+                slW.ShowDialog();
+            }
+        }
     }
 }

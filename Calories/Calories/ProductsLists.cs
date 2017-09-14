@@ -16,11 +16,25 @@ namespace Calories
     /// </summary>
     public partial class ProductsLists
     {
+        /// <summary>
+        /// One of primary key's field - reference to Products table
+        /// </summary>
         public int Product_id { get; set; }
+        /// <summary>
+        /// One of primary key's field - reference to Lists table
+        /// </summary>
         public int List_id { get; set; }
+        /// <summary>
+        /// Amount of product that is on specific list
+        /// </summary>
         public int Amount { get; set; }
-    
+        /// <summary>
+        /// List that is related to product
+        /// </summary>
         public virtual Lists Lists { get; set; }
+        /// <summary>
+        /// Product related to list
+        /// </summary>
         public virtual Products Products { get; set; }
     }
 }
