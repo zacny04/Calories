@@ -6,7 +6,7 @@ It was created as a university project.
 
 # Authors
 
-Bartosz Øurek<br />
-Micha≥ Kluczkowski<br />
-Stanis≥aw Fisher<br />
+Bartosz ≈ªurek<br />
+Micha≈Ç Kluczkowski<br />
+Stanis≈Çaw Fisher<br />
 Jakub Olech
