@@ -115,7 +115,22 @@ namespace Calories
              {
                  MessageBox.Show("Wprowadzona wartość nie jest liczbą", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                  tb.Text = "0";
+             } else
+             {
+                 ListViewItem lvI = GetAncestorOfType<ListViewItem>(tb);
+                 if(lvI != null)
+                 {
+                     ProductsLists pl = lvI.Content as ProductsLists;
+                     pl.Amount = int.Parse(tb.Text);
+                 }
              }
          }
+        private T GetAncestorOfType<T>(FrameworkElement child) where T : FrameworkElement
+        {
+             var parent = VisualTreeHelper.GetParent(child);
+             if (parent != null && !(parent is T))
+                 return (T)GetAncestorOfType<T>((FrameworkElement)parent);
+             return (T)parent;
+        }
     }
 }

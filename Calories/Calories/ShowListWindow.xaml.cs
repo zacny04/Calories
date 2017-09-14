@@ -27,6 +27,18 @@ using System;
  
              ListProductsLV.DataContext = list.ProductsLists;
  
+            int calories_sum = 0;
+ 
+             foreach(ProductsLists pl in list.ProductsLists)
+             {
+                 if(pl.Products.calories != null)
+                 {
+                     calories_sum += pl.Amount * (int)pl.Products.calories;
+                 }
+                 
+             }
+ 
+             CaloriesCount.Text = "£¹czna iloœæ kalorii: " + calories_sum.ToString();
              
          }
      }

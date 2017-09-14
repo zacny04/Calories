@@ -5,7 +5,7 @@
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:local="clr-namespace:Calories"
          mc:Ignorable="d"
-         Title="Lista produktÛw" Height="400" Width="300">
+         Title="Lista produkt√≥w" Height="400" Width="300">
      <Grid>
          <TextBlock Name="ListName"  VerticalAlignment="Top" Height="26"  Margin="5,2"/>
          <ListView Name="ListProductsLV" ItemsSource="{Binding}" Margin="5,30,5,50">
@@ -13,12 +13,12 @@
                  
                  <GridView>
                      <GridViewColumn Header="Nazwa" Width="90" DisplayMemberBinding="{Binding Products.Name}"/>
-                     <GridViewColumn Header="IloúÊ" Width="60" DisplayMemberBinding="{Binding Amount}"/>
-                     <GridViewColumn Header="£πczna iloúÊ kalorii" Width="130"/>
+                     <GridViewColumn Header="Ilo≈õƒá" Width="60" DisplayMemberBinding="{Binding Amount}"/>
+                     <GridViewColumn Header="≈ÅƒÖczna ilo≈õƒá kalorii" Width="130"/>
                  </GridView>
              </ListView.View>
          </ListView>
-         <TextBlock Name="CaloriesCount" VerticalAlignment="Bottom" Margin="10" Height="30" Width="100" HorizontalAlignment="Left"/>
-         <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" >Wyjdü</Button>
+         <TextBlock Name="CaloriesCount" VerticalAlignment="Bottom" Margin="10" Height="30" Width="160" HorizontalAlignment="Left"/>
+         <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" >Wyjd≈∫</Button>
      </Grid>
  </Window>

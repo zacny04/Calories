@@ -41,7 +41,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
 
-                                    <TextBox  Text="{Binding Path=Amount ,Mode=TwoWay}" LostFocus="Amount_LostFocus" />
+                                  <TextBox LostFocus="Amount_LostFocus" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
