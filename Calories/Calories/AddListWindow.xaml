@@ -30,7 +30,14 @@
                     <GridView>
                         <GridViewColumn Header="Nazwa" Width="100" DisplayMemberBinding="{Binding Products.Name}"/>
                         <GridViewColumn Header="Kalorie" Width="50" DisplayMemberBinding="{Binding Products.calories}"/>
-                        <GridViewColumn Header="Ilość" Width="50" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="Ilość" Width="50" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <TextBox Width="{Binding ElementName=ProductsListsLV, Path=View.Columns[2].Width}" Text="{Binding Path=Amount ,Mode=TwoWay}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -41,7 +48,7 @@
                 <Button Content="&lt;&lt;" Margin="5,96,5,0" Height="26" VerticalAlignment="Top" Click="RemoveAll_Button"/>
             </Grid>
             <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="0" Width="100" HorizontalAlignment="Center" Click="AddList_Button">Dodaj listę</Button>
-            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100">Anuluj</Button>
+            <Button VerticalAlignment="Bottom" Height="30" Margin="25,0,25,5" Grid.Column="2" HorizontalAlignment="Center" Width="100" Click="Close_Button">Anuluj</Button>
         </Grid>
     </Grid>
 </Window>

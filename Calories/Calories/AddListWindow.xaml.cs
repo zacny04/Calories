@@ -44,13 +44,17 @@ namespace Calories
 
         private void AddSelected_Button(object sender, RoutedEventArgs e)
         {
+            var products = from pr in prodList select pr.Products;
+
             foreach (Products item in ProductsLVS.SelectedItems)
             {
-
-                ProductsLists pl = new ProductsLists();
-                pl.Lists = list;
-                pl.Products = item;
-                prodList.Add(pl);
+                if (!products.Contains(item))
+                {
+                    ProductsLists pl = new ProductsLists();
+                    pl.Lists = list;
+                    pl.Products = item;
+                    prodList.Add(pl);
+                }
             }
         }
 
@@ -73,13 +77,16 @@ namespace Calories
 
         private void AddAll_Button(object sender, RoutedEventArgs e)
         {
+            var products = from pr in prodList select pr.Products;
             foreach (Products item in ProductsLVS.Items)
             {
-
-                ProductsLists pl = new ProductsLists();
-                pl.Lists = list;
-                pl.Products = item;
-                prodList.Add(pl);
+                if (!products.Contains(item))
+                {
+                    ProductsLists pl = new ProductsLists();
+                    pl.Lists = list;
+                    pl.Products = item;
+                    prodList.Add(pl);
+                }
             }
         }
 
@@ -92,6 +99,12 @@ namespace Calories
             }
             db.Lists.Add(list);
             db.SaveChanges();
+            Close();
+        }
+
+        private void Close_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
