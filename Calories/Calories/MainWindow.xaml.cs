@@ -47,8 +47,6 @@ namespace Calories
             {
                 oTh.Start();
             }
-
-
         }
 
         private void ShowProducts_Button(object sender, RoutedEventArgs e)
@@ -68,5 +66,14 @@ namespace Calories
         {
             db.Lists.Load();
         }
+        private void DeleteList_Button(object sender, RoutedEventArgs e)
+         {
+             if(ProductsListView.SelectedItems.Count == 0)
+             {
+                 Lists l = ProductsListView.SelectedItem as Lists;
+                 db.Lists.Remove(l);
+                 db.SaveChanges();
+             }
+         }
     }
 }

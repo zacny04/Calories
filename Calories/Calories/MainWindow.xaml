@@ -8,7 +8,7 @@
         Title="Kalorie" Height="400" Width="320">
   
     <Grid>
-        <ListView Name="ProductsListView" Margin="0,0,0,50"
+        <ListView SelectionMode="Single" Name="ProductsListView" Margin="0,0,0,50"
                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                    ItemsSource="{Binding}">
            <ListView.View>
@@ -21,7 +21,7 @@
         </ListView>
     
         <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Click="ShowProducts_Button">Produkty</Button>
-        <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">Usuń listę</Button>
+        <Button Width="80" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="DeleteList_Button">Usuń listę</Button>
         <Button Width="80" Height="30" VerticalAlignment="Bottom" Margin="10" Click="AddList_Button">Nowa lista</Button>
     </Grid>
 </Window>
