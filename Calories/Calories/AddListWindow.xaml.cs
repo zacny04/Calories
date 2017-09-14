@@ -31,7 +31,7 @@ namespace Calories
 
             list = new Lists
             {
-                Creation_date = DateTime.Now            
+                Creation_date = DateTime.Now
             };
 
             prodList = new ObservableCollection<ProductsLists>();
@@ -44,7 +44,7 @@ namespace Calories
 
         private void AddSelected_Button(object sender, RoutedEventArgs e)
         {
-            foreach(Products item in ProductsLVS.SelectedItems)
+            foreach (Products item in ProductsLVS.SelectedItems)
             {
 
                 ProductsLists pl = new ProductsLists();
@@ -56,23 +56,37 @@ namespace Calories
 
         private void RemoveAll_Button(object sender, RoutedEventArgs e)
         {
-
+            prodList.Clear();
         }
 
         private void RemoveSelected_Button(object sender, RoutedEventArgs e)
         {
-            
+            while (ProductsListsLV.SelectedItems.Count > 0)
+            {
+                ProductsLists pl = ProductsListsLV.SelectedItems[0] as ProductsLists;
+                if (pl != null)
+                {
+                    prodList.Remove(pl);
+                }
+            }
         }
 
         private void AddAll_Button(object sender, RoutedEventArgs e)
         {
+            foreach (Products item in ProductsLVS.Items)
+            {
 
+                ProductsLists pl = new ProductsLists();
+                pl.Lists = list;
+                pl.Products = item;
+                prodList.Add(pl);
+            }
         }
 
         private void AddList_Button(object sender, RoutedEventArgs e)
         {
             list.Name = lNameTextBox.Text;
-            foreach(ProductsLists pl in prodList)
+            foreach (ProductsLists pl in prodList)
             {
                 list.ProductsLists.Add(pl);
             }
