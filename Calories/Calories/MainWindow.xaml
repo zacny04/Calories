@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:Calories"
         mc:Ignorable="d"
         Title="Kalorie" Height="400" Width="320">
+
+        <Window.Resources>
+            <local:ListCaloriesConverter x:Key="ListCaloriesConverter"/>
+        </Window.Resources>
   
-    <Grid>
+  <Grid>
         <ListView SelectionMode="Single" Name="ProductsListView" Margin="0,0,0,50"
                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                    ItemsSource="{Binding}"
@@ -16,7 +20,7 @@
                 <GridView>
                     <GridViewColumn Header="Nazwa" Width="110" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Data utworzenia" Width="100" DisplayMemberBinding="{Binding Creation_date}" />
-                    <GridViewColumn Header="Ilość kalorii" Width="90" DisplayMemberBinding="{Binding }"/>
+                    <GridViewColumn Header="Ilość kalorii" Width="90" DisplayMemberBinding="{Binding Converter={StaticResource ListCaloriesConverter}}"/>
                 </GridView>
            </ListView.View>
         </ListView>

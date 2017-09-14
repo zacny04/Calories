@@ -6,15 +6,19 @@
          xmlns:local="clr-namespace:Calories"
          mc:Ignorable="d"
          Title="Lista produktów" Height="400" Width="300">
+         <Window.Resources>
+            <local:ProductsListCaloriesConverter x:Key="ProductsListCaloriesConverter"/>
+         </Window.Resources>
      <Grid>
          <TextBlock Name="ListName"  VerticalAlignment="Top" Height="26"  Margin="5,2"/>
-         <ListView Name="ListProductsLV" ItemsSource="{Binding}" Margin="5,30,5,50">
+         <ListView Name="ListProductsLV" ItemsSource="{Binding}" Margin="5,30,5,50"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
              <ListView.View>
                  
                  <GridView>
                      <GridViewColumn Header="Nazwa" Width="90" DisplayMemberBinding="{Binding Products.Name}"/>
-                     <GridViewColumn Header="Ilość" Width="60" DisplayMemberBinding="{Binding Amount}"/>
-                     <GridViewColumn Header="Łączna ilość kalorii" Width="130"/>
+                     <GridViewColumn Header="Ilość" Width="55" DisplayMemberBinding="{Binding Amount}"/>
+                     <GridViewColumn Header="Łączna ilość kalorii" Width="130" DisplayMemberBinding="{Binding Converter={StaticResource ProductsListCaloriesConverter}}" />
                  </GridView>
              </ListView.View>
          </ListView>
