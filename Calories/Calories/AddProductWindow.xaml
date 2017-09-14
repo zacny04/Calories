@@ -26,10 +26,10 @@
     <Window.DataContext>
         <local:Products/>
     </Window.DataContext>
-            <Grid>
+    <Grid>
         <TextBox x:Name="pNameTextBox" Style="{StaticResource pNameTextBoxStyle}" Text="{Binding Name}"  Height="23" Margin="102,21,20,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="pCaloriesTextBox" Style="{StaticResource textBoxStyle}" Text="{Binding calories}" Height="23" Margin="102,83,20,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="pWeightTextBox" Style="{StaticResource textBoxStyle}" Text="{Binding weight}" Height="23" Margin="102,52,20,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <TextBox x:Name="pCaloriesTextBox" Style="{StaticResource textBoxStyle}" Text="{Binding calories}" Height="23" Margin="102,83,20,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Product name:" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
         <Label Content="Weight(g):" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
         <Label Content="Calories:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
